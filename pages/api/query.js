@@ -3,11 +3,15 @@
 import { query } from "gamedig"
 
 export default async function handler(req, res) {
-  const response = await query({
-    type: "csgo",
-    host: "romania.laleagane.ro",
-    port: 27015,
-  });
-
-  res.status(200).json({ ...response })
+  const { ip, port, type } = req.query;
+  try {
+    const response = await query({
+      type: type ?? "csgo",
+      host: ip ?? "romania.laleagane.ro",
+      port: port ?? 27015,
+    });
+    res.status(200).json({ ...response })
+  } catch(e) {
+    res.status(500).json({ error: e.message })
+  }
 }

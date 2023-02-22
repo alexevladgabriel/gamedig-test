@@ -2,6 +2,10 @@
 
 import { query } from "gamedig"
 
+export const config = {
+  runtime: "experimental-edge",
+};
+
 export default async function handler(req, res) {
   const response = await query({
     type: "csgo",

@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
+    runtime: "experimental-edge",
     outputFileTracingIncludes: {
       '/api/query': ['node_modules/**/compressjs*/**/*']
     }
@@ -9,3 +10,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+``

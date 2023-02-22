@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       type: type ?? "csgo",
       host: ip ?? "romania.laleagane.ro",
       port: port ?? 27015,
-      socketTimeout: 10000,
+      socketTimeout: 30000,
     });
     res.status(200).json({ ...response })
   } catch(e) {

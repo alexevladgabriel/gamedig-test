@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import { useEffect, useState } from 'react'
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from '@next/font/google';
+import styles from '@/styles/Home.module.css';
+import { useEffect, useState } from 'react';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const [res, setRes] = useState(null);
@@ -12,7 +12,7 @@ export default function Home() {
     fetch('/api/query')
       .then((res) => res.json())
       .then((res) => setRes(res));
-  });
+  }, []);
   return (
     <>
       <Head>
@@ -25,12 +25,12 @@ export default function Home() {
         <ul>
           <li>Name: {res?.name}</li>
           <li>Map: {res?.map}</li>
-          <li>Game: {res?.game}</li>
-          <li>Version: {res?.version}</li>
+          <li>Game: {res?.raw.game}</li>
+          <li>Version: {res?.raw.version}</li>
           <li>Online Players: {res?.players.length}</li>
           <li>Max Players: {res?.maxplayers}</li>
         </ul>
       </main>
     </>
-  )
+  );
 }
